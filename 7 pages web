@@ -1,0 +1,132 @@
+Each page layout is designed with Clarity and Conciseness as the guiding characteristics, ensuring the user is never overwhelmed with data blocks.
+Page 1: Home View (Home.ts)
+Focuses on Simplicity. It gives an immediate, striking value proposition with clear actions.
+TypeScript
+import { Route } from '../types';
+
+export const HomeRoute: Route = {
+  path: '/',
+  title: 'Home',
+  render: () => `
+    <section class="hero-section">
+      <h1>Hi, I'm Alex Mercer</h1>
+      <p class="subtitle">Full-Stack TypeScript Engineer transforming complex problems into elegant user interfaces.</p>
+      <div class="cta-group">
+        <a href="/portfolio" class="btn btn-primary">View My Work</a>
+        <a href="/contact" class="btn btn-secondary">Get In Touch</a>
+      </div>
+    </section>
+  `
+};
+Page 2: About View (About.ts)
+Communicates background info cleanly without wall-of-text fatigue.
+TypeScript
+export const AboutRoute: Route = {
+  path: '/about',
+  title: 'About Me',
+  render: () => `
+    <section class="about-section">
+      <h2>About Me</h2>
+      <div class="about-grid">
+        <div class="bio">
+          <p>I am a passionate software engineer with 6+ years of experience specializing in building type-safe, maintainable, and highly performant web architectures.</p>
+          <p>My philosophy centers around user-first design—ensuring systems are accessible, intuitive, and blisteringly fast.</p>
+        </div>
+      </div>
+    </section>
+  `
+};
+Page 3: Portfolio View (Portfolio.ts)
+Demonstrates Visibility. Project metrics are placed front and center.
+TypeScript
+export const PortfolioRoute: Route = {
+  path: '/portfolio',
+  title: 'Portfolio',
+  render: () => `
+    <section class="portfolio-section">
+      <h2>Featured Projects</h2>
+      <div class="card-grid">
+        <div class="card">
+          <h3>E-Commerce Engine</h3>
+          <p>A headless retail platform built entirely with TS, processing thousands of requests per second.</p>
+          <span class="badge">Next.js</span> <span class="badge">TypeScript</span>
+        </div>
+        <div class="card">
+          <h3>Analytics Dashboard</h3>
+          <p>Real-time data visualization pipeline rendering millions of metrics using WebGL and Canvas.</p>
+          <span class="badge">D3.js</span> <span class="badge">WebSockets</span>
+        </div>
+      </div>
+    </section>
+  `
+};
+Page 4: Experience View (Experience.ts)
+Uses a familiar chronological layout pattern (Familiarity ensures user intuition).
+TypeScript
+export const ExperienceRoute: Route = {
+  path: '/experience',
+  title: 'Experience',
+  render: () => `
+    <section class="experience-section">
+      <h2>Professional Timeline</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <span class="date">2024 - Present</span>
+          <h3>Principal Engineer</h3>
+          <p class="company">TechCorp Solutions</p>
+          <p>Leading architectural migrations to monorepos, reducing build cycle overhead by 40%.</p>
+        </div>
+        <div class="timeline-item">
+          <span class="date">2021 - 2024</span>
+          <h3>Senior UI Developer</h3>
+          <p class="company">Innovate Lab</p>
+          <p>Created design systems utilized across 12 distinct internal and consumer applications.</p>
+        </div>
+      </div>
+    </section>
+  `
+};
+Page 5: Skills View (Skills.ts)
+Groups information logically (Structure Principle) to prevent cognitive overload.
+TypeScript
+export const SkillsRoute: Route = {
+  path: '/skills',
+  title: 'Technical Skills',
+  render: () => `
+    <section class="skills-section">
+      <h2>Core Competencies</h2>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h3>Languages</h3>
+          <ul><li>TypeScript / JavaScript</li><li>Rust</li><li>HTML5 / CSS3</li></ul>
+        </div>
+        <div class="skill-category">
+          <h3>Frameworks & Tools</h3>
+          <ul><li>React / Next.js</li><li>Node.js</li><li>GraphQL</li><li>Docker</li></ul>
+        </div>
+      </div>
+    </section>
+  `
+};
+Page 6: Testimonials View (Testimonials.ts)
+Social proof layout emphasizing readability.
+TypeScript
+export const TestimonialsRoute: Route = {
+  path: '/testimonials',
+  title: 'Testimonials',
+  render: () => `
+    <section class="testimonials-section">
+      <h2>What People Say</h2>
+      <div class="testimonial-grid">
+        <blockquote class="testimonial-card">
+          <p>"Alex's attention to system detail and type safety radically improved our deployment velocity."</p>
+          <cite>— Sarah Jenkins, VP of Engineering</cite>
+        </blockquote>
+        <blockquote class="testimonial-card">
+          <p>"An exceptional UI designer who truly understands how to write rigorous, maintainable code."</p>
+          <cite>— Marcus Chen, Product Director</cite>
+        </blockquote>
+      </div>
+    </section>
+  `
+};
