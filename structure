@@ -1,0 +1,18 @@
+1. Project Structure & Organization
+src/
+├── components/          # Reusable UI Components (Principle of Reuse)
+│   ├── Navbar.ts
+│   ├── Footer.ts
+│   └── Button.ts
+├── layouts/
+│   └── MainLayout.ts    # Global layout ensuring UI Consistency
+├── routes/
+│   └── router.ts        # Client-side router handling navigation
+└── views/               # The 7 required webpages
+    ├── Home.ts
+    ├── About.ts
+    ├── Portfolio.ts
+    ├── Experience.ts
+    ├── Skills.ts
+    ├── Testimonials.ts
+    └── Contact.ts
