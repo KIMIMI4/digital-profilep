@@ -1,0 +1,9 @@
+
+UI Concept applied	Component Implementation details
+Structure Principle	-Views are separated from the layout wrapper and the centralized routing system.
+Simplicity Principle	-Layout items rely heavily on whitespace and brief, clean text instead of clutter.
+Tolerance & Feedback	Interactive elements like forms handle state with instant dynamic tracking strings.
+Clarity Characteristic	Plain layout labels (/portfolio, /contact) eliminate abstract guesswork during navigation.
+Responsiveness	-JavaScript native history updates elements instantly without heavy asset round-trips.
+
+
