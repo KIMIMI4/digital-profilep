@@ -1,0 +1,92 @@
+. Core Architecture & Routing (TypeScript)
+To achieve Responsiveness (fast transitions) and Visibility (clear current state), we will implement a lightweight, strict client-side router in TypeScript.
+Data Types (types.ts)
+First, we define explicit types to keep our views structured and predictable.
+TypeScript
+export interface Route {
+  path: string;
+  title: string;
+  render: () => string;
+  init?: () => void; // For attaching event listeners post-render
+}
+The Router Implementation (router.ts)
+This class manages the application state, updates the DOM dynamically, and ensures Feedback by updating the window title and active navigation states.
+TypeScript
+import { Route } from './types';
+
+export class Router {
+  private routes: Map<string, Route> = new Map();
+  private appContainer: HTMLElement;
+
+  constructor(appContainerId: string) {
+    const container = document.getElementById(appContainerId);
+    if (!container) throw new Error(`Container #${appContainerId} not found.`);
+    this.appContainer = container;
+
+    // Handle browser back/forward navigation
+    window.addEventListener('popstate', () => this.handleRouting());
+  }
+
+  public register(route: Route): void {
+    this.routes.set(route.path, route);
+  }
+
+  public navigate(path: string): void {
+    window.history.pushState({}, '', path);
+    this.handleRouting();
+  }
+
+  private handleRouting(): void {
+    const path = window.location.pathname || '/';
+    const route = this.routes.get(path) || this.routes.get('/404');
+
+    if (route) {
+      document.title = `${route.title} | Digital Profile`;
+      
+      // Render the structural layout wrapper with the view content inside
+      this.appContainer.innerHTML = this.getLayoutWrapper(route.render());
+      
+      // Execute post-render scripts/event handlers (Tolerance & Feedback)
+      if (route.init) route.init();
+      
+      this.setupNavigationListeners();
+    }
+  }
+
+  private getLayoutWrapper(content: string): string {
+    // Global layout ensuring Consistency across pages
+    return `
+      <nav class="navbar">
+        <a href="/" class="nav-brand">DevProfile</a>
+        <div class="nav-links">
+          <a href="/" class="nav-item">Home</a>
+          <a href="/about" class="nav-item">About</a>
+          <a href="/portfolio" class="nav-item">Portfolio</a>
+          <a href="/experience" class="nav-item">Experience</a>
+          <a href="/skills" class="nav-item">Skills</a>
+          <a href="/testimonials" class="nav-item">Testimonials</a>
+          <a href="/contact" class="nav-item">Contact</a>
+        </div>
+      </nav>
+      <main class="content-container animate-fade-in">
+        ${content}
+      </main>
+      <footer class="footer">
+        <p>&copy; 2026 Digital Profile. Built with TypeScript.</p>
+      </footer>
+    `;
+  }
+
+  private setupNavigationListeners(): void {
+    // Intercept standard anchor clicks for smooth Single Page Application (SPA) routing
+    document.querySelectorAll('a').forEach(anchor => {
+      anchor.addEventListener('click', (e) => {
+        const href = anchor.getAttribute('href');
+        if (href && href.startsWith('/')) {
+          e.preventDefault();
+          this.navigate(href);
+        }
+      });
+    });
+  }
+}
