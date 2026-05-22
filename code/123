@@ -1,0 +1,52 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> hello learner</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+
+    
+    <header class="site-header">
+        <div class="container">
+            <h1>hello learner</h1>
+            <nav class="main-nav">
+                <a href="index.html">Home</a>
+                <a href="technical.html">Technical</a>
+                <a href="index.html">Home</a>
+                <a href="about me.html">about</a>
+                <a href="contact.html">contacts</a>
+                <a href="UI principles.html">principles</a>
+                <a href="UIcharacteristic.html">characteristics</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h2>Technical Documentation</h2>
+            <p>This page describes the system architecture, implementation details, and development notes.</p>
+        </section>
+
+        <section class="technical-details">
+            <h3>Architecture</h3>
+            <p>The system is a small static site with optional Vercel serverless endpoints for GitHub OAuth. Pages are plain HTML that reuse a shared stylesheet and a small client script at <code>assets/app.js</code>.</p>
+
+
+            
+
+            <h3>Implementation Notes</h3>
+            <p>Keep shared styles in <code>assets/style.css</code> and reuse the same header/footer markup for a consistent site layout. The OAuth endpoints are in <code>api/auth/</code> and require Vercel environment variables:</p>
+            <ul>
+                <li><code>GITHUB_CLIENT_ID</code></li>
+                <li><code>GITHUB_CLIENT_SECRET</code></li>
+                <li>Set these in the Vercel dashboard for the project before deploying.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+    
+</body>
+</html>
